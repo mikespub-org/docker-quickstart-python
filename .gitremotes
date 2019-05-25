@@ -1,0 +1,6 @@
+[remote "tutumcloud"]
+	url = https://github.com/tutumcloud/quickstart-python.git
+	fetch = +refs/heads/*:refs/remotes/tutumcloud/*
+[branch "tutumcloud/master"]
+	remote = tutumcloud
+	merge = refs/heads/master
