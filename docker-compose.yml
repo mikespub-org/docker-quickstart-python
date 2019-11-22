@@ -1,8 +1,13 @@
-web:
-  build: .
-  links:
-    - redis
-  ports:
-    - "5000:80"
-redis:
-  image: redis
+version: '3'
+services:
+  web:
+    build: .
+    links:
+      - redis
+    ports:
+      - "${FLASK_PORT}:5080"
+    environment:
+      - FLASK_PORT=5080
+      - FLASK_HOST=0.0.0.0
+  redis:
+    image: redis

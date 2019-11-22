@@ -11,10 +11,12 @@ RUN pip install -r requirements.txt
 # Copy our code from the current folder to /app inside the container
 ADD . /app
 
-# Make port 5000 available for links and/or publish
-EXPOSE 80 
+# Make port 5080 available for links and/or publish
+ENV FLASK_PORT 5080
+EXPOSE $FLASK_PORT
 
 # Environment Variables
+ENV FLASK_HOST 0.0.0.0
 ENV NAME World
 
 # Define our command to be run when launching the container
