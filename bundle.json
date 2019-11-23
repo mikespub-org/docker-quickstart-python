@@ -49,6 +49,13 @@
 				"env": "docker_param2"
 			}
 		},
+		"HOST_PORT": {
+			"type": "string",
+			"default": "5080",
+			"destination": {
+				"env": "docker_param3"
+			}
+		},
 		"com.docker.app.kubernetes-namespace": {
 			"type": "string",
 			"default": "",
