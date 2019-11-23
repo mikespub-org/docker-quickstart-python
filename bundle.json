@@ -1,0 +1,125 @@
+{
+	"name": "python-app",
+	"version": "0.1.0",
+	"description": "Quickstart Python with Docker App",
+	"maintainers": [
+		{
+			"name": "mikespub"
+		}
+	],
+	"invocationImages": [
+		{
+			"imageType": "docker",
+			"image": "python-app:0.1.0-invoc"
+		}
+	],
+	"images": {
+		"redis": {
+			"imageType": "docker",
+			"image": "redis",
+			"description": "redis"
+		},
+		"web": {
+			"imageType": "docker",
+			"image": "mikespub/quickstart-python",
+			"description": "mikespub/quickstart-python"
+		}
+	},
+	"actions": {
+		"com.docker.app.inspect": {
+			"stateless": true
+		},
+		"com.docker.app.render": {
+			"stateless": true
+		},
+		"com.docker.app.status": {}
+	},
+	"parameters": {
+		"FLASK_HOST": {
+			"type": "string",
+			"default": "0.0.0.0",
+			"destination": {
+				"env": "docker_param1"
+			}
+		},
+		"FLASK_PORT": {
+			"type": "string",
+			"default": "5080",
+			"destination": {
+				"env": "docker_param2"
+			}
+		},
+		"com.docker.app.kubernetes-namespace": {
+			"type": "string",
+			"default": "",
+			"metadata": {
+				"description": "Namespace in which to deploy"
+			},
+			"destination": {
+				"env": "DOCKER_KUBERNETES_NAMESPACE"
+			},
+			"apply-to": [
+				"install",
+				"upgrade",
+				"uninstall",
+				"com.docker.app.status"
+			]
+		},
+		"com.docker.app.orchestrator": {
+			"type": "string",
+			"default": "",
+			"allowedValues": [
+				"",
+				"swarm",
+				"kubernetes"
+			],
+			"metadata": {
+				"description": "Orchestrator on which to deploy"
+			},
+			"destination": {
+				"env": "DOCKER_STACK_ORCHESTRATOR"
+			},
+			"apply-to": [
+				"install",
+				"upgrade",
+				"uninstall",
+				"com.docker.app.status"
+			]
+		},
+		"com.docker.app.render-format": {
+			"type": "string",
+			"default": "yaml",
+			"allowedValues": [
+				"yaml",
+				"json"
+			],
+			"metadata": {
+				"description": "Output format for the render command"
+			},
+			"destination": {
+				"env": "DOCKER_RENDER_FORMAT"
+			},
+			"apply-to": [
+				"com.docker.app.render"
+			]
+		},
+		"com.docker.app.share-registry-creds": {
+			"type": "bool",
+			"default": false,
+			"metadata": {
+				"description": "Share registry credentials with the invocation image"
+			},
+			"destination": {
+				"env": "DOCKER_SHARE_REGISTRY_CREDS"
+			}
+		}
+	},
+	"credentials": {
+		"com.docker.app.registry-creds": {
+			"path": "/cnab/app/registry-creds.json"
+		},
+		"docker.context": {
+			"path": "/cnab/app/context.dockercontext"
+		}
+	}
+}

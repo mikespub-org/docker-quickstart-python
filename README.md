@@ -40,9 +40,15 @@ $ docker-compose up
 
 ```
 $ docker app init --compose-file docker-compose.yml python-app
-$ docker app build . -f python-app.dockerapp -t mikespub/python-app:0.1.0
-$ docker app push mikespub/python-app:0.1.0
-$ docker-compose up 
+$ ...
+$ docker app inspect python-app.dockerapp
+$ docker app validate python-app.dockerapp
+$ docker app render python-app.dockerapp
+$ docker swarm init (if necessary)
+$ docker app install python-app.dockerapp --name my-app
+$ docker app status my-app
+$ docker app bundle my-app
+$ docker app push my-app -t mikespub/python-app:0.1.0
 ```
 
 ### Deploying with Docker App
@@ -50,7 +56,8 @@ $ docker-compose up
 [Install Docker App.](https://github.com/docker/app#installation)
 
 ```
-$ docker app run mikespub/python-app:0.1.0
+$ docker app inspect mikespub/python-app:latest
+$ docker app install mikespub/python-app:latest
 ```
 
 **Continue with this tutorial [here](https://docs.docker.com/compose/gettingstarted/).**

@@ -1,14 +1,13 @@
 version: '3.6'
 services:
   web:
-    build: .
     image: mikespub/quickstart-python
     links:
       - redis
     ports:
       - "${FLASK_PORT}:5080"
     environment:
-      - FLASK_PORT=5080
-      - FLASK_HOST=0.0.0.0
+      - FLASK_PORT=${FLASK_PORT}
+      - FLASK_HOST=${FLASK_HOST}
   redis:
     image: redis
