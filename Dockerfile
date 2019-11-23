@@ -9,7 +9,7 @@ ADD requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
 # Copy our code from the current folder to /app inside the container
-ADD . /app
+ADD *.py /app/
 
 # Make port 5080 available for links and/or publish
 ENV FLASK_PORT 5080
@@ -20,4 +20,4 @@ ENV FLASK_HOST 0.0.0.0
 ENV NAME World
 
 # Define our command to be run when launching the container
-CMD ["python", "app.py"]
+CMD ["gunicorn", "-c", "guniconfig.py", "app:app"]

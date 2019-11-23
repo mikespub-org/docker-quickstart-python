@@ -5,7 +5,7 @@ services:
     links:
       - redis
     ports:
-      - "${FLASK_PORT}:5080"
+      - "${HOST_PORT}:${FLASK_PORT}"
     environment:
       - FLASK_PORT=${FLASK_PORT}
       - FLASK_HOST=${FLASK_HOST}
