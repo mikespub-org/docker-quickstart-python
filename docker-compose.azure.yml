@@ -1,0 +1,22 @@
+# https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-multi-container
+# https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-multi-container-app
+#
+# Create multicontainer web app:
+# az webapp create --resource-group $AZURE_RESOURCE_GROUP --plan $AZURE_APP_SERVICE_PLAN --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose.azure.yml
+# Update multicontainer web app:
+# az webapp config container set --resource-group $AZURE_RESOURCE_GROUP --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose.azure.yml
+version: '3.6'
+services:
+  web:
+    image: mikespub/quickstart-python
+    links:
+      - redis
+    ports:
+      - "5080:5080"
+    environment:
+      - FLASK_PORT=5080
+      - FLASK_HOST=0.0.0.0
+    restart: always
+  redis:
+    image: redis
+    restart: always
