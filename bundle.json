@@ -1,6 +1,6 @@
 {
 	"name": "python-app",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Quickstart Python with Docker App",
 	"maintainers": [
 		{
@@ -10,7 +10,7 @@
 	"invocationImages": [
 		{
 			"imageType": "docker",
-			"image": "python-app:0.1.0-invoc"
+			"image": "python-app:0.2.0-invoc"
 		}
 	],
 	"images": {

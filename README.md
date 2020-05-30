@@ -47,8 +47,8 @@ $ docker app render python-app.dockerapp
 $ docker swarm init (if necessary)
 $ docker app install python-app.dockerapp --name my-app
 $ docker app status my-app
-$ docker app bundle my-app
-$ docker app push my-app -t mikespub/python-app:0.1.0
+$ docker app bundle python-app.dockerapp
+$ docker app push --tag mikespub/python-app:0.1.0
 ```
 
 ### Deploying with Docker App
