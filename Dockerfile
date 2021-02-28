@@ -1,5 +1,5 @@
 # Using official python runtime base image
-FROM python:3.8-slim
+FROM python:3.9.2-slim
 
 # Set the application directory
 WORKDIR /app
