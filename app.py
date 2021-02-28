@@ -1,8 +1,7 @@
-from flask import Flask
+from flask import Flask, escape
 from redis import Redis, RedisError
 import os
 import socket
-import html
 
 # Connect to Redis
 redis = Redis(host="redis", db=0)
@@ -25,7 +24,7 @@ def hello():
            "<b>Visits:</b> {visits}<br/>" \
            "<b>File:</b> {file}<br/>" \
            "<b>Environ:</b> <pre>{environ}</pre>"
-    return tmpl.format(name=os.getenv('NAME', "world"), hostname=socket.gethostname(), visits=visits, file=__file__, environ=html.escape(info))
+    return tmpl.format(name=os.getenv('NAME', "world"), hostname=socket.gethostname(), visits=visits, file=__file__, environ=escape(info))
 
 
 if __name__ == "__main__":
