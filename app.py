@@ -2,6 +2,7 @@ from flask import Flask
 from redis import Redis, RedisError
 import os
 import socket
+import html
 
 # Connect to Redis
 redis = Redis(host="redis", db=0)
@@ -24,7 +25,7 @@ def hello():
            "<b>Visits:</b> {visits}<br/>" \
            "<b>File:</b> {file}<br/>" \
            "<b>Environ:</b> <pre>{environ}</pre>"
-    return html.format(name=os.getenv('NAME', "world"), hostname=socket.gethostname(), visits=visits, file=__file__, environ=info.replace('<', '&lt;'))
+    return html.format(name=os.getenv('NAME', "world"), hostname=socket.gethostname(), visits=visits, file=__file__, environ=html.escape(info))
 
 
 if __name__ == "__main__":
