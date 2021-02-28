@@ -20,12 +20,12 @@ def hello():
     except RedisError:
         visits = "<i>cannot connect to Redis, counter disabled</i>"
 
-    html = "<h3>Hello {name}!</h3>" \
+    tmpl = "<h3>Hello {name}!</h3>" \
            "<b>Hostname:</b> {hostname}<br/>" \
            "<b>Visits:</b> {visits}<br/>" \
            "<b>File:</b> {file}<br/>" \
            "<b>Environ:</b> <pre>{environ}</pre>"
-    return html.format(name=os.getenv('NAME', "world"), hostname=socket.gethostname(), visits=visits, file=__file__, environ=html.escape(info))
+    return tmpl.format(name=os.getenv('NAME', "world"), hostname=socket.gethostname(), visits=visits, file=__file__, environ=html.escape(info))
 
 
 if __name__ == "__main__":
