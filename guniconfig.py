@@ -10,4 +10,4 @@ bind = "%s:%s" % (os.getenv("FLASK_HOST", "0.0.0.0"), os.getenv("FLASK_PORT", 50
 # workers = 1
 # threads = 8
 # Timeout is set to 0 to disable the timeouts of the workers to allow Cloud Run to handle instance scaling.
-# timeout = 0
+timeout = 0
