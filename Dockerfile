@@ -1,8 +1,12 @@
 # Using official python runtime base image
 FROM python:3.9.5-slim
 
+# Allow statements and log messages to immediately appear in the Knative logs
+ENV PYTHONUNBUFFERED True
+
 # Set the application directory
-WORKDIR /app
+ENV APP_HOME /app
+WORKDIR $APP_HOME
 
 # Install our requirements.txt
 ADD requirements.txt /app/requirements.txt
