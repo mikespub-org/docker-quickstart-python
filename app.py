@@ -1,7 +1,8 @@
-from flask import Flask, escape
-from redis import Redis, RedisError
 import os
 import socket
+
+from flask import Flask, escape, json, request
+from redis import Redis, RedisError
 
 # Connect to Redis
 redis = Redis(host="redis", db=0)
@@ -11,9 +12,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    from flask import request
-    import json
-
     info = json.dumps(request.environ, indent=2, default=lambda o: repr(o))
     try:
         visits = redis.incr("counter")
