@@ -1,7 +1,7 @@
 # gunicorn configuration file
 import os
 
-bind = "%s:%s" % (os.getenv("FLASK_HOST", "0.0.0.0"), os.getenv("FLASK_PORT", 5080))
+bind = "{}:{}".format(os.getenv("FLASK_HOST", "0.0.0.0"), os.getenv("FLASK_PORT", 5080))
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
