@@ -61,3 +61,21 @@ $ docker app install mikespub/python-app:latest
 ```
 
 **Continue with this tutorial [here](https://docs.docker.com/compose/gettingstarted/).**
+
+### Migrate from Docker App to Porter
+
+https://porter.sh/blog/migrate-from-docker-app/
+
+$ porter install --allow-docker-host-access
+$ ...
+$ porter build
+$ porter publish
+$ ...
+$ porter explain --reference mikespub/python-app:v0.3.0
+$ porter inspect --reference mikespub/python-app:v0.3.0
+$ ...
+$ porter install python-app --reference mikespub/python-app:v0.3.0 --allow-docker-host-access
+$ porter upgrade python-app --reference mikespub/python-app:v0.3.1 --allow-docker-host-access
+$ porter uninstall python-app --allow-docker-host-access
+
+

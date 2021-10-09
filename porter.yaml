@@ -1,0 +1,49 @@
+# Name of the application
+name: python-app
+# Version of the application
+version: 0.3.1
+# A short description of the application
+description: Quickstart Python with Porter (Docker App)
+registry: mikespub
+
+required:
+- docker:
+    privileged: false # Change to true if you need privileged containers
+
+parameters:
+- name: flask_port
+  type: integer
+  env: FLASK_PORT
+  default: 5080
+- name: flask_host
+  type: string
+  env: FLASK_HOST
+  default: 0.0.0.0
+- name: host_port
+  type: integer
+  env: HOST_PORT
+  default: 5080
+
+mixins:
+- docker-compose
+
+install:
+- docker-compose:
+    description: Docker Compose Up
+    arguments:
+    - up
+    - -d
+
+upgrade:
+- docker-compose:
+    description: Docker Compose Up
+    arguments:
+    - up
+    - -d
+
+uninstall:
+- docker-compose:
+    description: Docker Compose Down
+    arguments:
+    - down
+    - --remove-orphans
