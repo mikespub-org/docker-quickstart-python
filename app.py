@@ -1,5 +1,6 @@
 import os
 import socket
+import time
 
 from flask import Flask, escape, json, request
 from redis import Redis, RedisError
@@ -23,6 +24,7 @@ def hello():
         "<b>Hostname:</b> {hostname}<br/>"
         "<b>Visits:</b> {visits}<br/>"
         "<b>File:</b> {file}<br/>"
+        "<b>Modified:</b> {date}<br/>"
         "<b>Environ:</b> <pre>{environ}</pre>"
     )
     return tmpl.format(
@@ -30,6 +32,7 @@ def hello():
         hostname=socket.gethostname(),
         visits=visits,
         file=__file__,
+        date=time.ctime(os.path.getmtime(__file__)),
         environ=escape(info),
     )
 
