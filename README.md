@@ -66,6 +66,7 @@ $ docker app install mikespub/python-app:latest
 
 https://porter.sh/blog/migrate-from-docker-app/
 
+```
 $ porter install --allow-docker-host-access
 $ ...
 $ porter build
@@ -77,5 +78,6 @@ $ ...
 $ porter install python-app --reference mikespub/python-app:v0.3.0 --allow-docker-host-access
 $ porter upgrade python-app --reference mikespub/python-app:v0.3.1 --allow-docker-host-access
 $ porter uninstall python-app --allow-docker-host-access
+```
 
 
