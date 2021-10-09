@@ -1,5 +1,6 @@
 import os
 import socket
+import sys
 import time
 
 from flask import Flask, escape, json, request
@@ -25,6 +26,7 @@ def hello():
         "<b>Visits:</b> {visits}<br/>"
         "<b>File:</b> {file}<br/>"
         "<b>Modified:</b> {date}<br/>"
+        "<b>Python:</b> {version}<br/>"
         "<b>Environ:</b> <pre>{environ}</pre>"
     )
     return tmpl.format(
@@ -33,6 +35,7 @@ def hello():
         visits=visits,
         file=__file__,
         date=time.ctime(os.path.getmtime(__file__)),
+        version=escape(sys.version),
         environ=escape(info),
     )
 
