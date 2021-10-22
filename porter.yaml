@@ -1,7 +1,7 @@
 # Name of the application
 name: python-app
 # Version of the application
-version: 0.3.1
+version: 0.3.2
 # A short description of the application
 description: Quickstart Python with Porter (Docker App)
 registry: mikespub
@@ -23,6 +23,10 @@ parameters:
   type: integer
   env: HOST_PORT
   default: 5080
+- name: name
+  type: string
+  env: NAME
+  default: Porter
 
 mixins:
 - docker-compose

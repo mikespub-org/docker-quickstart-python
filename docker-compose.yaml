@@ -10,5 +10,6 @@ services:
     environment:
       - FLASK_PORT=${FLASK_PORT}
       - FLASK_HOST=${FLASK_HOST}
+      - NAME=${NAME:-Compose}
   redis:
     image: redis
