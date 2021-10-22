@@ -34,7 +34,7 @@ Hello World!</br>Hostname: ebf2b5258db0</br>Counter: Redis Cache not found, coun
 $ docker-compose up 
 ```
 
-### Building with Docker App
+### Building with Docker App (deprecated - see Porter below)
 
 [Install Docker App.](https://github.com/docker/app#installation)
 
@@ -51,7 +51,7 @@ $ docker app bundle python-app.dockerapp
 $ docker app push --tag mikespub/python-app:0.1.0
 ```
 
-### Deploying with Docker App
+### Deploying with Docker App (deprecated - see Porter below)
 
 [Install Docker App.](https://github.com/docker/app#installation)
 
