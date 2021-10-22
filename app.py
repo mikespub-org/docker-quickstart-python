@@ -30,7 +30,7 @@ def hello():
         "<b>Environ:</b> <pre>{environ}</pre>"
     )
     return tmpl.format(
-        name=os.getenv("NAME", "World"),
+        name=os.getenv("APP_NAME", "World"),
         hostname=socket.gethostname(),
         visits=visits,
         file=__file__,

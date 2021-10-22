@@ -21,7 +21,7 @@ EXPOSE $FLASK_PORT
 
 # Environment Variables
 ENV FLASK_HOST 0.0.0.0
-ENV NAME Docker
+ENV APP_NAME Docker
 
 # Define our command to be run when launching the container
 CMD ["gunicorn", "-c", "guniconfig.py", "app:app"]

@@ -23,9 +23,9 @@ parameters:
   type: integer
   env: HOST_PORT
   default: 5080
-- name: name
+- name: app_name
   type: string
-  env: NAME
+  env: APP_NAME
   default: Porter
 
 mixins:
