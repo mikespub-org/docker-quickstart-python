@@ -3,7 +3,7 @@ services:
   web:
     build: .
     image: mikespub/quickstart-python
-    links:
+    depends_on:
       - redis
     ports:
       - "${HOST_PORT}:${FLASK_PORT}"
