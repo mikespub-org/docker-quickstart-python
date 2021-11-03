@@ -18,9 +18,9 @@ def add_wsgi_proxy(wsgi_app):
     # Use same defaults as ProxyFix here
     return ProxyFix(
         wsgi_app,
-        x_for=os.getenv("PROXY_FIX_FOR", 1),
-        x_proto=os.getenv("PROXY_FIX_PROTO", 1),
-        x_host=os.getenv("PROXY_FIX_HOST", 0),
-        x_port=os.getenv("PROXY_FIX_PORT", 0),
-        x_prefix=os.getenv("PROXY_FIX_PREFIX", 0),
+        x_for=int(os.getenv("PROXY_FIX_FOR", 1)),
+        x_proto=int(os.getenv("PROXY_FIX_PROTO", 1)),
+        x_host=int(os.getenv("PROXY_FIX_HOST", 0)),
+        x_port=int(os.getenv("PROXY_FIX_PORT", 0)),
+        x_prefix=int(os.getenv("PROXY_FIX_PREFIX", 0)),
     )
