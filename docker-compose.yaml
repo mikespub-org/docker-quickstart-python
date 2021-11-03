@@ -11,5 +11,6 @@ services:
       - FLASK_PORT=${FLASK_PORT}
       - FLASK_HOST=${FLASK_HOST}
       - APP_NAME=${APP_NAME:-Compose}
+      - PROXY_FIX=${PROXY_FIX}
   redis:
     image: redis

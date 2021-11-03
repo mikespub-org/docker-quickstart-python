@@ -5,11 +5,14 @@ import time
 
 from flask import Flask, escape, json, request
 from redis import Redis, RedisError
+from fix_proxy import add_wsgi_proxy
 
 # Connect to Redis
 redis = Redis(host="redis", db=0)
 
 app = Flask(__name__)
+# Wrapping app.wsgi_app instead of app means that app still points at your Flask application, not at the middleware.
+app.wsgi_app = add_wsgi_proxy(app.wsgi_app)
 
 
 @app.route("/")
