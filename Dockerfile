@@ -24,4 +24,4 @@ ENV FLASK_HOST 0.0.0.0
 ENV APP_NAME Docker
 
 # Define our command to be run when launching the container
-CMD ["gunicorn", "-c", "guniconfig.py", "app:app"]
+CMD ["gunicorn", "-c", "gunicorn.conf.py", "app:app"]
