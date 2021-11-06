@@ -83,3 +83,7 @@ $ porter uninstall python-app --allow-docker-host-access
 See https://github.com/getporter/docker-compose-mixin/tree/main/examples
 and https://github.com/getporter/porter/tree/main/examples/dockerapp
 
+### Deploy with Portainer on Synology NAS
+
+See known bug and work-arounds at [Portainer on Synology NAS](synology.md)
+
