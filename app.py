@@ -16,7 +16,7 @@ app.wsgi_app = add_wsgi_proxy(app.wsgi_app)
 
 
 @app.route("/")
-def hello():
+def hello(more=""):
     info = json.dumps(request.environ, indent=2, default=lambda o: repr(o))
     try:
         visits = redis.incr("counter")
@@ -26,6 +26,7 @@ def hello():
     tmpl = (
         "<h3>Hello {name}!</h3>"
         "<b>Hostname:</b> {hostname}<br/>"
+        "<b>Path:</b> /{more}<br/>"
         "<b>Visits:</b> {visits}<br/>"
         "<b>File:</b> {file}<br/>"
         "<b>Modified:</b> {date}<br/>"
@@ -35,12 +36,18 @@ def hello():
     return tmpl.format(
         name=os.getenv("APP_NAME", "World"),
         hostname=socket.gethostname(),
+        more=escape(more),
         visits=visits,
         file=__file__,
         date=time.ctime(os.path.getmtime(__file__)),
         version=escape(sys.version),
         environ=escape(info),
     )
+
+
+@app.route("/<path:more>")
+def other(more):
+    return hello(more)
 
 
 if __name__ == "__main__":
