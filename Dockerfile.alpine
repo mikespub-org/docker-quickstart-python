@@ -9,7 +9,7 @@ ENV APP_HOME=/app
 WORKDIR $APP_HOME
 
 # Install gcc and other requirements
-RUN apk add --no-cache gcc musl-dev linux-headers
+# RUN apk add --no-cache gcc musl-dev linux-headers
 
 # Install our requirements.txt
 COPY requirements.txt /app/requirements.txt
