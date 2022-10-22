@@ -16,3 +16,5 @@ services:
       kompose.service.expose: "${APP_HOST:-quickstart-python}"
   redis:
     image: redis
+    ports:
+    - 6379:6379
