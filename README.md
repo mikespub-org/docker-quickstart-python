@@ -87,3 +87,27 @@ and https://github.com/getporter/porter/tree/main/examples/dockerapp
 
 See known bug and work-arounds at [Portainer on Synology NAS](synology.md)
 
+### Deploy with Helm chart on Kubernetes or OpenShift
+
+See Helm chart repository at [Mike's Pub Helm Charts](https://github-org.mikespub.net/sclorg-django-ex/) or find on [ArtifactHUB](https://artifacthub.io/packages/search?repo=mikespub-helmcharts)
+
+```
+$ helm repo add mikespub-charts https://github-org.mikespub.net/sclorg-django-ex/
+$ helm install my-quickstart-python mikespub-charts/quickstart-python
+```
+
+### Create/update Helm chart for Kubernetes or templates for OpenShift
+
+[Install Kompose.](https://github.com/kubernetes/kompose)
+
+```
+$ kompose convert -c -o quickstart-python
+$ helm package quickstart-python/
+$ helm install my-quickstart-python quickstart-python
+```
+
+```
+$ mkdir -p openshift/templates
+$ kompose convert -o openshift/templates --provider=openshift --build build-config
+```
+
