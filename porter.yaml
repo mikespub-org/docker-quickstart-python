@@ -1,7 +1,7 @@
 # Name of the application
 name: python-app
 # Version of the application
-version: 0.3.8
+version: 0.3.11
 # A short description of the application
 description: Quickstart Python with Porter (Docker App)
 registry: mikespub
