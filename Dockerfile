@@ -8,6 +8,11 @@ ENV PYTHONUNBUFFERED=True
 ENV APP_HOME=/app
 WORKDIR $APP_HOME
 
+# See https://pythonspeed.com/articles/activate-virtualenv-dockerfile/
+# ENV VIRTUAL_ENV=/opt/venv
+# RUN python3 -m venv $VIRTUAL_ENV
+# ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
 # Install our requirements.txt
 COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
