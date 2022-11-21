@@ -111,3 +111,55 @@ $ mkdir -p openshift/templates
 $ kompose convert -o openshift/templates --provider=openshift --build build-config
 ```
 
+### Building with Cloud Native Buildpacks
+
+See [Turn Your Code into Docker Images with Cloud Native Buildpacks](https://blog.heroku.com/docker-images-with-buildpacks) and [An App’s Brief Journey from Source to Image](https://buildpacks.io/docs/app-journey/)
+
+[Install Pack.](https://buildpacks.io/docs/tools/pack/)
+
+Create [project.toml](project.toml) to exclude/include files for the image, specify buildpacks etc.
+
+Create [Procfile](Procfile) if you want to use heroku buildpacks:
+
+```
+$ cat Procfile
+web: gunicorn app:app
+```
+
+Build (and optionally publish) container image with appropriate builder:
+
+```
+$ pack build --builder heroku/buildpacks mikespub/buildpacks-python
+latest: Pulling from heroku/buildpacks
+...
+===> ANALYZING
+[analyzer] Restoring data for SBOM from previous image
+===> DETECTING
+[detector] heroku/python 0.0.0
+===> RESTORING
+[restorer] Restoring metadata for "heroku/python:shim" from cache
+[restorer] Restoring data for "heroku/python:shim" from cache
+===> BUILDING
+[builder] -----> No Python version was specified. Using the same version as the last build: python-3.10.8
+[builder]        To use a different version, see: https://devcenter.heroku.com/articles/python-runtimes
+...
+[builder] -----> Installing requirements with pip
+===> EXPORTING
+...
+[exporter] Setting default process type 'web'
+[exporter] Saving mikespub/buildpacks-python...
+[exporter] *** Images (sha256:7b74d89e524730f704b5e8ef56ac1ee0bcad3475be82dea885d826c5bda20bde):
+[exporter]       mikespub/buildpacks-python
+[exporter] Adding cache layer 'heroku/python:shim'
+Successfully built image mikespub/buildpacks-python
+```
+
+Test the containerized app image with Docker:
+
+```
+$ docker run --rm -p 5080:5080 mikespub/buildpacks-python
+[2022-11-21 15:37:49 +0000] [1] [INFO] Starting gunicorn 20.1.0
+[2022-11-21 15:37:49 +0000] [1] [INFO] Listening at: http://0.0.0.0:5080 (1)
+...
+```
+

@@ -1,0 +1,21 @@
+[project]
+id = "mikespub/buildpacks-python"
+name = "Quickstart Python App using Buildpacks"
+version = "0.1.0"
+
+[build]
+exclude = [
+	".git",
+	".github",
+	"*.pyc",
+	"*.pyo",
+	"*.pyd",
+	"__pycache__",
+	".pytest_cache",
+	"*.yml",
+	".cnab"
+]
+
+[[build.buildpacks]]
+uri = "heroku/python"
+
