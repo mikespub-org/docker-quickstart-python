@@ -13,7 +13,7 @@ services:
       - APP_NAME=${APP_NAME:-Compose}
       - PROXY_FIX=${PROXY_FIX:-0}
     labels:
-      kompose.service.expose: "${APP_HOST:-quickstart-python}"
+      kompose.service.expose: "${APP_HOST:-quickstart-python.test}"
   redis:
     image: redis
     ports:
