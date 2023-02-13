@@ -3,7 +3,7 @@ import socket
 import sys
 import time
 
-from flask import Flask, escape, json, request
+from flask import Flask, escape, json, request, abort
 from redis import Redis, RedisError
 from fix_proxy import add_wsgi_proxy
 
@@ -47,6 +47,8 @@ def hello(more=""):
 
 @app.route("/<path:more>")
 def other(more):
+    if more.endswith("favicon.ico"):
+        abort(404)
     return hello(more)
 
 
