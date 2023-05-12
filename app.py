@@ -3,7 +3,8 @@ import socket
 import sys
 import time
 
-from flask import Flask, escape, json, request, abort
+from flask import Flask, json, request, abort
+from markupsafe import escape
 from redis import Redis, RedisError
 from fix_proxy import add_wsgi_proxy
 
