@@ -1,3 +1,5 @@
+schemaType: Bundle
+schemaVersion: 1.0.1
 # Name of the application
 name: python-app
 # Version of the application
