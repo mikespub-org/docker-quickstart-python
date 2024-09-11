@@ -1,4 +1,5 @@
 import os
+
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 # See https://werkzeug.palletsprojects.com/en/2.0.x/middleware/proxy_fix/
@@ -10,6 +11,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 #     X-Forwarded-Prefix sets SCRIPT_NAME.
 # You must tell the middleware how many proxies set each header so it knows what values to trust.
 # app = ProxyFix(app, x_for=1, x_proto=1, x_host=0, x_port=0, x_prefix=0)
+
 
 # Wrapping app.wsgi_app instead of app means that app still points at your Flask application, not at the middleware.
 def add_wsgi_proxy(wsgi_app):

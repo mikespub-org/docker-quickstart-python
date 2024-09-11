@@ -3,9 +3,10 @@ import socket
 import sys
 import time
 
-from flask import Flask, json, request, abort
+from flask import Flask, abort, json, request
 from markupsafe import escape
 from redis import Redis, RedisError
+
 from fix_proxy import add_wsgi_proxy
 
 # Connect to Redis
@@ -18,7 +19,7 @@ app.wsgi_app = add_wsgi_proxy(app.wsgi_app)
 
 @app.route("/")
 def hello(more=""):
-    info = json.dumps(request.environ, indent=2, default=lambda o: repr(o))
+    info = json.dumps(request.environ, indent=2, default=repr)
     try:
         visits = redis.incr("counter")
     except RedisError:
